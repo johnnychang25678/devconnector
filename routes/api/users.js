@@ -52,7 +52,7 @@ router.post('/', [
       // Return jsonwebtoken
       const payload = {
         user: {
-          id: user.id // id is from mongoDB
+          id: user.id // id is from mongoDB, mongoose abstract ._id to .id
         }
       }
 
