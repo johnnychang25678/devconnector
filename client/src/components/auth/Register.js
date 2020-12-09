@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { setAlert } from '../../actions/alert'
+import { register } from '../../actions/auth'
 import PropTypes from 'prop-types'
 
 
-const Register = (props) => {
+const Register = ({ setAlert, register }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -23,9 +24,9 @@ const Register = (props) => {
   const onSubmitHander = async (event) => {
     event.preventDefault()
     if (password !== password2) {
-      props.setAlert('Passwords do not match', 'danger')
+      setAlert('Passwords do not match', 'danger')
     } else {
-      console.log('Success')
+      register({ name, email, password })
 
     }
   }
@@ -42,7 +43,7 @@ const Register = (props) => {
             value={name}
             onChange={onChangeHandler}
             name="name"
-            required />
+          />
         </div>
         <div className="form-group">
           <input
@@ -51,7 +52,7 @@ const Register = (props) => {
             value={email}
             onChange={onChangeHandler}
             name="email"
-            required />
+          />
           <small className="form-text">
             This site uses Gravatar so if you want a profile image, use a
             Gravatar email
@@ -64,7 +65,7 @@ const Register = (props) => {
             value={password}
             onChange={onChangeHandler}
             name="password"
-            minLength="6"
+
           />
         </div>
         <div className="form-group">
@@ -74,7 +75,7 @@ const Register = (props) => {
             value={password2}
             onChange={onChangeHandler}
             name="password2"
-            minLength="6"
+
           />
         </div>
         <input type="submit" className="btn btn-primary" value="Register" />
@@ -87,7 +88,9 @@ const Register = (props) => {
 }
 
 Register.propTypes = {
-  setAlert: PropTypes.func.isRequired,
+  setAlert: PropTypes.func.isRequired, // ptfr
+  register: PropTypes.func.isRequired,
+
 }
 
-export default connect(null, { setAlert })(Register)
+export default connect(null, { setAlert, register })(Register)
