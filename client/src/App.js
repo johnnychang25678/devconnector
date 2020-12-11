@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navbar from './components/layout/Navbar'
 import Landing from './components/layout/Landing'
 import Register from './components/auth/Register'
@@ -11,8 +11,19 @@ import './App.css';
 //Redux 
 import { Provider } from 'react-redux'
 import store from './store'
+import { loadUser } from './actions/auth'
+import setAuthToken from './utils/setAuthToken'
+
+if (localStorage.token) {
+  setAuthToken(localStorage.token) // set header
+}
+
 
 const App = () => {
+  useEffect(() => {
+    store.dispatch(loadUser())
+  }, [])
+
   return (
     <Provider store={store}>
       <BrowserRouter>
