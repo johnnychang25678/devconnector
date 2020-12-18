@@ -23,7 +23,7 @@ export default function auth(state = initialState, action) {
       localStorage.setItem('token', payload.token)
       return {
         ...state,
-        ...payload,
+        ...payload, // payload: {token: ......}
         isAuthenticated: true,
         loading: false
       }
