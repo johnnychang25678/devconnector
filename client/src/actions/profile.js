@@ -37,7 +37,7 @@ export const createProfile = (formData, history, edit = false) => async dispatch
 
     dispatch(setAlert(edit ? 'Profile Update' : 'Profile Created', 'success'))
 
-    if (!edit) { // redirect in action needs to use history object
+    if (!edit) { // redirect in action needs to use history object. If edit is false, meaning I'm not editing (i am creating), will redirect to dashboard. If I am editing, will not redirect at all.
       history.push('/dashboard')
     }
 
