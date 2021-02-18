@@ -14,13 +14,13 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import './App.css';
 
 //Redux 
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux' // Provider to wrap all the components (provide redux store to react App)
 import store from './store'
 import { loadUser } from './actions/auth'
 import setAuthToken from './utils/setAuthToken'
 
 if (localStorage.token) {
-  setAuthToken(localStorage.token) // set header
+  setAuthToken(localStorage.token) // config all axios request header as x-auth-token: token
 }
 
 
