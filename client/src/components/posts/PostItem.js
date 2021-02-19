@@ -15,7 +15,7 @@ const PostItem = ({ auth, addLike, removeLike, deletePost, post: { _id, text, na
             src={avatar}
             alt=""
           />
-          <h4>John Doe</h4>
+          <h4>{name}</h4>
         </Link>
       </div>
       <div>
@@ -60,4 +60,4 @@ const mapStateToProps = state => ({
 })
 
 
-export default connect(mapStateToProps, { addLike, removeLike })(PostItem)
+export default connect(mapStateToProps, { addLike, removeLike, deletePost })(PostItem)
