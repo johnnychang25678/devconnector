@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from '../utils/axiosInstance'
 import { setAlert } from './alert'
 import { GET_PROFILE, PROFILE_ERROR, UPDATE_PROFILE, ACCOUNT_DELETED, CLEAR_PROFILE, GET_PROFILES, GET_REPOS } from './types'
 
@@ -76,13 +76,7 @@ export const getGithubRepos = username => async dispatch => {
 // Create or update profile
 export const createProfile = (formData, history, edit = false) => async dispatch => {
   try {
-    const config = {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }
-
-    const res = await axios.post('/api/profile', formData, config)
+    const res = await axios.post('/api/profile', formData)
 
     dispatch({
       type: GET_PROFILE,
@@ -112,13 +106,7 @@ export const createProfile = (formData, history, edit = false) => async dispatch
 // Add Experience
 export const addExperience = (formData, history) => async dispatch => {
   try {
-    const config = {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }
-
-    const res = await axios.put('/api/profile/experience', formData, config)
+    const res = await axios.put('/api/profile/experience', formData)
 
     dispatch({
       type: UPDATE_PROFILE,
@@ -145,13 +133,7 @@ export const addExperience = (formData, history) => async dispatch => {
 // Add Education
 export const addEducation = (formData, history) => async dispatch => {
   try {
-    const config = {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }
-
-    const res = await axios.put('/api/profile/education', formData, config)
+    const res = await axios.put('/api/profile/education', formData)
 
     dispatch({
       type: UPDATE_PROFILE,

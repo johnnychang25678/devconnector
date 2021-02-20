@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from '../utils/axiosInstance'
 import { setAlert } from './alert'
 
 import { REGISTER_SUCCESS, REGISTER_FAIL, USER_LOADED, AUTH_ERROR, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT, CLEAR_PROFILE } from './types'
@@ -23,14 +23,8 @@ export const loadUser = () => async dispatch => {
 
 // Register User
 export const register = (formData) => async dispatch => {
-  const config = {
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  }
-
   try {
-    const res = await axios.post('/api/users', formData, config)
+    const res = await axios.post('/api/users', formData)
     dispatch({
       type: REGISTER_SUCCESS,
       payload: res.data
@@ -52,15 +46,10 @@ export const register = (formData) => async dispatch => {
 
 // Login User
 export const login = (email, password) => async dispatch => {
-  const config = {
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  }
 
-  const body = JSON.stringify({ email, password })
+  const body = { email, password }
   try {
-    const res = await axios.post('/api/auth', body, config)
+    const res = await axios.post('/api/auth', body)
     dispatch({
       type: LOGIN_SUCCESS,
       payload: res.data

@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from '../utils/axiosInstance'
 
 const setAuthToken = token => {
   if (token) {
