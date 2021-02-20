@@ -2,9 +2,11 @@ import axios from 'axios'
 
 const setAuthToken = token => {
   if (token) {
-    axios.defaults.headers.common['x-auth-token'] = token
+    axios.defaults.headers.common['x-auth-token'] = token // set common header for every axios request if there's token
+    localStorage.setItem('token', token)
   } else {
     delete axios.defaults.headers.common['x-auth-token']
+    localStorage.removeItem('token')
   }
 }
 

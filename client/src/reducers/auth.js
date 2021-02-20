@@ -20,7 +20,6 @@ export default function auth(state = initialState, action) {
       }
     case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
-      localStorage.setItem('token', payload.token)
       return {
         ...state,
         ...payload, // payload: {token: ......}
@@ -32,7 +31,6 @@ export default function auth(state = initialState, action) {
     case LOGIN_FAIL:
     case LOGOUT:
     case ACCOUNT_DELETED:
-      localStorage.removeItem('token') // clear token from localStorage 
       return {
         ...state,
         token: null,
