@@ -16,13 +16,15 @@ export default function profile(state = initialState, action) {
       return {
         ...state,
         profile: payload,
-        loading: false
+        loading: false,
+        error: {}
       }
     case GET_PROFILES:
       return {
         ...state,
         profiles: payload,
-        loading: false
+        loading: false,
+        error: {}
       }
     case PROFILE_ERROR:
       return {
@@ -36,13 +38,15 @@ export default function profile(state = initialState, action) {
         ...state,
         profile: null,
         repos: [],
-        loading: false
+        loading: false,
+        error: {}
       }
     case GET_REPOS:
       return {
         ...state,
         repos: payload,
-        loading: false
+        loading: false,
+        error: {}
       }
     default:
       return state
