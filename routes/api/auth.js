@@ -60,10 +60,11 @@ router.post('/', [
         }
       }
 
+      const expirationTime = 60*60*24
       jwt.sign(
         payload,
         process.env.jwtSecret || config.get('jwtSecret'),
-        { expiresIn: 60 * 60 * 24 }, // 60 secs * 60 min * 24 hrs
+        { expiresIn: expirationTime }, // 60 secs * 60 min * 24 hrs
         (err, token) => {
           if (err) throw err
           res.json({ token })
