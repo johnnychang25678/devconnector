@@ -16,7 +16,7 @@ import Post from './components/post/Post'
 import PrivateRoute from './components/routing/PrivateRoute'
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import './App.css';
+import './App.css'
 
 //Redux 
 import { Provider } from 'react-redux' // Provider to wrap all the components (provide redux store to react App)
@@ -59,7 +59,7 @@ const App = () => {
         </React.Fragment>
       </BrowserRouter>
     </Provider>
-  );
+  )
 }
 
-export default App;
+export default App

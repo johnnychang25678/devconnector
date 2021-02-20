@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import formatDate from '../../utils/formatDate';
+import React from 'react'
+import PropTypes from 'prop-types'
+import formatDate from '../../utils/formatDate'
 
 const ProfileEducation = ({
   education: { school, degree, fieldofstudy, current, to, from, description }
@@ -20,10 +20,10 @@ const ProfileEducation = ({
       <strong>Description: </strong> {description}
     </p>
   </div>
-);
+)
 
 ProfileEducation.propTypes = {
   education: PropTypes.object.isRequired
-};
+}
 
-export default ProfileEducation;
+export default ProfileEducation

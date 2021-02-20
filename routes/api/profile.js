@@ -74,13 +74,13 @@ router.post('/', [auth, [
   }
 
   // Build social object
-  const socialfields = { youtube, twitter, instagram, linkedin, facebook };
+  const socialfields = { youtube, twitter, instagram, linkedin, facebook }
 
   for (const [key, value] of Object.entries(socialfields)) {
     if (value.length > 0)
-      socialfields[key] = normalize(value, { forceHttps: true });
+      socialfields[key] = normalize(value, { forceHttps: true })
   }
-  profileFields.social = socialfields;
+  profileFields.social = socialfields
 
   try {
     let profile = await Profile.findOne({ user: req.user.id })
