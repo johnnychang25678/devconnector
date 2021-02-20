@@ -3,6 +3,7 @@ const axios = require('axios')
 const router = express.Router()
 const config = require('config')
 const { check, validationResult } = require('express-validator')
+const normalize = require('normalize-url') // to convert user input url to https//...
 
 const Profile = require('../../models/Profile')
 const User = require('../../models/User')
@@ -58,10 +59,12 @@ router.post('/', [auth, [
   } = req.body
 
   // Build profile object
-  const profileFields = {}
+  const profileFields = {
+
+  }
   profileFields.user = req.user.id
   if (company) profileFields.company = company
-  if (website) profileFields.website = website
+  if (website) profileFields.website = normalize(website, { forceHttps: true })
   if (location) profileFields.location = location
   if (bio) profileFields.bio = bio
   if (status) profileFields.status = status
@@ -71,13 +74,13 @@ router.post('/', [auth, [
   }
 
   // Build social object
+  const socialfields = { youtube, twitter, instagram, linkedin, facebook };
 
-  profileFields.social = {}
-  if (youtube) profileFields.social.youtube = youtube
-  if (facebook) profileFields.social.facebook = facebook
-  if (twitter) profileFields.social.twitter = twitter
-  if (instagram) profileFields.social.instagram = instagram
-  if (linkedin) profileFields.social.linkedin = linkedin
+  for (const [key, value] of Object.entries(socialfields)) {
+    if (value.length > 0)
+      socialfields[key] = normalize(value, { forceHttps: true });
+  }
+  profileFields.social = socialfields;
 
   try {
     let profile = await Profile.findOne({ user: req.user.id })
