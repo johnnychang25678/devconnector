@@ -2,3 +2,4 @@ node_modules/
 config/default.json
 .prettierrc
 .eslintrc.json
+.DS_Store
