@@ -54,7 +54,7 @@ export const login = (email, password) => async dispatch => {
       type: LOGIN_SUCCESS,
       payload: res.data
     })
-    dispatch(loadUser())
+    dispatch(loadUser()) // state: {user: null -> user} after login
   } catch (err) {
 
     const errors = err.response.data.errors
